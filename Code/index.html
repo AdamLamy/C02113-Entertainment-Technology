@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.3.x/dist/aframe-environment-component.min.js"></script>
+  </head>
+  <body>
+    <a-assets>
+      <img id="groundtexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+    </a-assets>
+
+    <a-scene>
+      <!-- environment: sky (the sky), plane (the floor)-->
+      <a-plane color="black" rotation="-90 0 0" width="80" height="80"></a-plane>
+      <a-sky color="black"></a-sky>
+      
+      <!-- out of box environment set to starry. NOTE: this will conflict with the plane and override the sky. Comment this line out if we want to use it. -->
+      <!-- 
+      <a-entity environment="preset: starry; dressingAmount: 500"></a-entity>
+      -->
+
+      <!-- Lighting -->
+      <!-- tbd -->
+      
+      <!-- Walls and ceilings-->
+      <!-- Front wall - blue -->
+      <a-box position="0 10 -20" width="80" height="40" depth="0.5" color="#4CC3D9"></a-box>
+
+      <!-- Left wall - green -->
+      <a-box position="-40 10 0" rotation="0 90 0" width="40" height="40" depth="0.5" color="#00FF7F"></a-box>
+
+      <!-- Right wall - purple -->
+      <a-box position="40 10 0" rotation="0 90 0" width="40" height="40" depth="0.5" color="#800080"></a-box>
+
+      <!-- Back wall - orange -->
+      <a-box position="0 10 20" width="80" height="40" depth="0.5" color="#FF4500"></a-box>
+
+      <!-- Ceiling-->
+      <a-box position="0 30 0" rotation="90 0 0" width="80" height="40" depth="0.5" color="#FFFFFF"></a-box>
+      
+      <!-- interior -->
+      <!-- stage -->
+      <a-box color="red" position="0 1 -13" scale="60 2 5"></a-box>
+
+      <!-- Upper platforms. Yellow - left, turquoise - right, magenta - middle-->
+      <a-box color="yellow" position="-35 12 5" scale="10 1 25"></a-box>
+      <a-box color="turquoise" position="35 12 5" scale="10 1 25"></a-box>
+      <a-box color="magenta" position="0 12 12.5" scale="55 1 10"></a-box>
+    </a-scene>
+  </body>
+</html>
