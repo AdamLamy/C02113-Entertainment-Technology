@@ -2,6 +2,7 @@
   <head>
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component@1.3.x/dist/aframe-environment-component.min.js"></script>
+    <script src="audiocontext.js"></script>
   </head>
   <body>
     <a-scene>
@@ -10,7 +11,10 @@
         <img id="wallTexture" crossorigin="anonymous" src="https://images.pexels.com/photos/11285436/pexels-photo-11285436.png">
         <img id="frontWallTexture" crossorigin="anonymous" src="https://images.pexels.com/photos/28901526/pexels-photo-28901526/free-photo-of-futuristic-digital-polygon-in-neon-light-art.jpeg">
         <img id="ceilingTexture" crossorigin="anonymous" src="https://images.pexels.com/photos/26797493/pexels-photo-26797493/free-photo-of-a-green-and-blue-abstract-painting.jpeg">
-        <img id="stageTexture" crossorigin="anonymous" src="https://images.pexels.com/photos/12932215/pexels-photo-12932215.jpeg">
+        <img id="stageTexture" crossorigin="anonymous" src="https://images.pexels.com/photos/12932215/pexels-photo-12932215.jpeg">#
+        <audio id="song" src="https://cdn.glitch.global/e02af362-694e-4526-9dd7-823c834a3ae7/World_is_Mine-Hatsune_Miku.mp3?v=1742319623628" preload="auto" crossorigin="anonymous"></audio>
+        
+       
       </a-assets>
 
       <!-- Environment -->
@@ -97,6 +101,51 @@
       <a-light type="point" position="30 10 -10" intensity="0" color="#21e689" animation="property: intensity; to: 5; dir: alternate; dur: 500; loop: true"></a-light>
       <a-light type="point" position="0 15 -13" intensity="0" color="#031856" animation="property: intensity; to: 5; dir: alternate; dur: 500; loop: true"></a-light>
       <a-light type="point" position="0 5 -10" intensity="0" color="#031856" animation="property: intensity; to: 5; dir: alternate; dur: 500; loop: true"></a-light>
+
+      <!-- Sound -->
+      <a-entity id="camera" position="0 1.6 0" camera look-controls wasd-controls="acceleration:100">
+        <a-entity cursor="rayOrigin: mouse"></a-entity>
+      </a-entity>
+      
+      <a-entity laser-controls="hand:right"></a-entity>
+
+
+      <a-entity class="musicpanel" position="0 3 -14" rotation="0 0 0" sound="src: #song"></a-entity> 
+       
+      <a-entity  position="0 3 3" rotation="0 180 0" sound="src: #song">
+
+        <a-plane width="2.5" height="1.5" position="0 -1 0" shader="flat" color="#5bf3fb" side="double"  ></a-plane>
+        <a-plane position="0 -.5 .01" width="2" height=".5" transparent="true" opacity=".9" color="#21e689"        
+                 text="value: hatsune miku \n Song - world is mine; width: 4; align:center"></a-plane>
+        
+        <a-plane id="playbox"  depth=".01" scale=".3 .3 .3" position="-.673 -1.22 .01" shader="flat" width="2" height="2"
+        material="color:#191817; shader: flat" transparent="true" opacity=".9" songplayer>
+           <a-triangle id="playicon" color="white" depth=".01" scale="1 1 1" rotation="0 0 -90" 
+           position=".1 -.02 .06" shader="flat" width="2" height="2" vertex-a="0 .3 0" >
+          </a-triangle>
+       </a-plane> 
+        
+       <a-plane id="stopbox"  scale=".3 .3 .3" position="0 -1.22 .01" shader="flat" width="2" height="2"
+       material="color:#191817; shader: flat" transparent="true" opacity=".9"  >
+           <a-plane id="stopicon" color="white" scale="1 1 1" position="0 0 .06" 
+            shader="flat" width="1" height="1"  >
+          </a-plane>
+       </a-plane>
+
+       <a-plane id="pausebox" scale=".3 .3 .3" position=".673 -1.22 .01" shader="flat" width="2" height="2"
+       material="color:#191817; shader: flat" transparent="true" opacity=".9">
+          <a-plane id="pauseiconleft" color="white" depth=".1" scale="1 1 1" 
+          position="-.4 0 .06" shader="flat" width=".5" height="1"  ></a-plane>
+          <a-plane id="pauseiconright" color="white" depth=".1" scale="1 1 1" 
+          position=".4 0 .06" shader="flat" width=".5" height="1"></a-plane>
+       </a-plane>
+
+       <!-- Speakers -->
+       <a-box color="darkgrey" position="35 -2 16" scale="3 3 3" class="musicpanel" sound="src: #song"></a-box>#
+       <a-box color="darkgrey" position="-35 -2 16" scale="3 3 3" class="musicpanel" sound="src: #song"></a-box>
+       <a-box color="darkgrey" position="38 25 -16" scale="2 2 2" class="musicpanel" sound="src: #song"></a-box>
+       <a-box color="darkgrey" position="-38 25 -16" scale="2 2 2" class="musicpanel" sound="src: #song"></a-box>
+       
 
     </a-scene>
   </body>
