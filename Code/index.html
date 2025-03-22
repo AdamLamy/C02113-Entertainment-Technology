@@ -2,6 +2,8 @@
   <head>
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component@1.3.x/dist/aframe-environment-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://www.gstatic.com/draco/v1/decoders/draco_decoder.js"></script>
     <script src="audiocontext.js"></script>
   </head>
   <body>
@@ -13,8 +15,10 @@
         <img id="ceilingTexture" crossorigin="anonymous" src="https://images.pexels.com/photos/26797493/pexels-photo-26797493/free-photo-of-a-green-and-blue-abstract-painting.jpeg">
         <img id="stageTexture" crossorigin="anonymous" src="https://images.pexels.com/photos/12932215/pexels-photo-12932215.jpeg">#
         <audio id="song" src="https://cdn.glitch.global/e02af362-694e-4526-9dd7-823c834a3ae7/World_is_Mine-Hatsune_Miku.mp3?v=1742319623628" preload="auto" crossorigin="anonymous"></audio>
-        
-       
+          <a-asset-item id="hatsuneMikuModel" src="hatsunemiku/scene.gltf"></a-asset-item>
+          <a-asset-item id="crowdModel" src="robotcrowd/scene.gltf"></a-asset-item>
+          <a-asset-item id="femaleModel" src="femalecheering/scene.gltf"></a-asset-item>
+          <a-asset-item id="rah" src="crowd/scene.gltf"></a-asset-item>
       </a-assets>
 
       <!-- Environment -->
@@ -32,7 +36,7 @@
       <a-plane position="0 2 -19.9" width="80" height="0.5" color="#21e689" material="emissive: #21e689; emissiveIntensity: 2"></a-plane>
       <a-plane position="0 5 -19.9" width="80" height="0.5" color="#21e689" material="emissive: #21e689; emissiveIntensity: 2"></a-plane>
       <a-plane position="0 8 -19.9" width="80" height="0.5" color="#21e689" material="emissive: #21e689; emissiveIntensity: 2"></a-plane>
-      
+
       <!-- Floor -->
       <a-plane position="0.5 0.1 0" rotation="-90 0 0" width="80" height="0.3" color="#21e689" material="emissive: #21e689; emissiveIntensity: 2"></a-plane>
       <a-plane position="0.5 0.1 10" rotation="-90 0 0" width="80" height="0.3" color="#21e689" material="emissive: #21e689; emissiveIntensity: 2"></a-plane>
@@ -60,7 +64,7 @@
       <a-box color="grey" position="-35 12 5" scale="10 1 25" src="#floorTexture"></a-box>
       <a-box color="grey" position="35 12 5" scale="10 1 25" src="#floorTexture"></a-box>
       <a-box color="grey" position="0 12 12.5" scale="55 1 10" src="#floorTexture"></a-box>
-      
+
       <!-- Lighting -->
       <a-light type="point" position="0 15 -13" intensity="5" color="#21e689"></a-light>
       <a-light type="point" position="-20 15 -13" intensity="10" color="#5bf3fb"></a-light>
@@ -70,23 +74,23 @@
       <a-cone position="-25 2 -13" rotation="15 90 0" radius-bottom="0.1" radius-top="0.1" height="100" color="#21e689" material="emissive: #21e689; emissiveIntensity: 2" scale="1 1 1"
         animation="property: rotation; to: 25 90 0; dir: alternate; dur: 1500; loop: true"></a-cone>
       <a-sphere position="-25 0 -13" radius="4" color="#21e689" opacity="0.2" scale="1 1 1" material="shader: flat; transparent: true; opacity: 0.15; color: #21e689; emissive: #21e689"></a-sphere>
-  
+
       <a-cone position="-20 2 -13" rotation="10 90 0" radius-bottom="0.1" radius-top="0.1" height="100" color="#5bf3fb" material="emissive: #5bf3fb; emissiveIntensity: 2" scale="1 1 1"
         animation="property: rotation; to: 20 90 0; dir: alternate; dur: 1500; loop: true"></a-cone>
       <a-sphere position="-20 0 -13" radius="4" color="#5bf3fb" opacity="0.2" scale="1 1 1" material="shader: flat; transparent: true; opacity: 0.15; color: #5bf3fb; emissive: #5bf3fb"></a-sphere>
-    
+
       <a-cone position="-15 2 -13" rotation="5 90 0" radius-bottom="0.1" radius-top="0.1" height="100" color="#21e689" material="emissive: #21e689; emissiveIntensity: 2" scale="1 1 1"
         animation="property: rotation; to: 15 90 0; dir: alternate; dur: 1500; loop: true"></a-cone>
       <a-sphere position="-15 0 -13" radius="4" color="#21e689" opacity="0.2" scale="1 1 1" material="shader: flat; transparent: true; opacity: 0.15; color: #21e689; emissive: #21e689"></a-sphere>
-    
+
       <a-cone position="15 2 -13" rotation="-5 90 0" radius-bottom="0.1" radius-top="0.1" height="100" color="#21e689" material="emissive: #21e689; emissiveIntensity: 2" scale="1 1 1"
         animation="property: rotation; to: -15 90 0; dir: alternate; dur: 1500; loop: true"></a-cone>
       <a-sphere position="15 0 -13" radius="4" color="#21e689" opacity="0.2" scale="1 1 1" material="shader: flat; transparent: true; opacity: 0.15; color: #21e689; emissive: #21e689"></a-sphere>
-    
+
       <a-cone position="20 2 -13" rotation="-10 90 0" radius-bottom="0.1" radius-top="0.1" height="100" color="#5bf3fb" material="emissive: #5bf3fb; emissiveIntensity: 2" scale="1 1 1"
         animation="property: rotation; to: -20 90 0; dir: alternate; dur: 1500; loop: true"></a-cone>
       <a-sphere position="20 0 -13" radius="4" color="#5bf3fb" opacity="0.2" scale="1 1 1" material="shader: flat; transparent: true; opacity: 0.15; color: #5bf3fb; emissive: #5bf3fb"></a-sphere>
-    
+
       <a-cone position="25 2 -13" rotation="-15 90 0" radius-bottom="0.1" radius-top="0.1" height="100" color="#21e689" material="emissive: #21e689; emissiveIntensity: 2" scale="1 1 1"
         animation="property: rotation; to: -25 90 0; dir: alternate; dur: 1500; loop: true"></a-cone>
       <a-sphere position="25 0 -13" radius="4" color="#21e689" opacity="0.2" scale="1 1 1" material="shader: flat; transparent: true; opacity: 0.15; color: #21e689; emissive: #21e689"></a-sphere>
@@ -106,37 +110,37 @@
       <a-entity id="camera" position="0 1.6 0" camera look-controls wasd-controls="acceleration:100">
         <a-entity cursor="rayOrigin: mouse"></a-entity>
       </a-entity>
-      
+
       <a-entity laser-controls="hand:right"></a-entity>
 
 
-      <a-entity class="musicpanel" position="0 3 -14" rotation="0 0 0" sound="src: #song"></a-entity> 
-       
+      <a-entity class="musicpanel" position="0 3 -14" rotation="0 0 0" sound="src: #song"></a-entity>
+
       <a-entity  position="0 3 3" rotation="0 180 0" sound="src: #song">
 
         <a-plane width="2.5" height="1.5" position="0 -1 0" shader="flat" color="#5bf3fb" side="double"  ></a-plane>
-        <a-plane position="0 -.5 .01" width="2" height=".5" transparent="true" opacity=".9" color="#21e689"        
+        <a-plane position="0 -.5 .01" width="2" height=".5" transparent="true" opacity=".9" color="#21e689"
                  text="value: hatsune miku \n Song - world is mine; width: 4; align:center"></a-plane>
-        
+
         <a-plane id="playbox"  depth=".01" scale=".3 .3 .3" position="-.673 -1.22 .01" shader="flat" width="2" height="2"
         material="color:#191817; shader: flat" transparent="true" opacity=".9" songplayer>
-           <a-triangle id="playicon" color="white" depth=".01" scale="1 1 1" rotation="0 0 -90" 
+           <a-triangle id="playicon" color="white" depth=".01" scale="1 1 1" rotation="0 0 -90"
            position=".1 -.02 .06" shader="flat" width="2" height="2" vertex-a="0 .3 0" >
           </a-triangle>
-       </a-plane> 
-        
+       </a-plane>
+
        <a-plane id="stopbox"  scale=".3 .3 .3" position="0 -1.22 .01" shader="flat" width="2" height="2"
        material="color:#191817; shader: flat" transparent="true" opacity=".9"  >
-           <a-plane id="stopicon" color="white" scale="1 1 1" position="0 0 .06" 
+           <a-plane id="stopicon" color="white" scale="1 1 1" position="0 0 .06"
             shader="flat" width="1" height="1"  >
           </a-plane>
        </a-plane>
 
        <a-plane id="pausebox" scale=".3 .3 .3" position=".673 -1.22 .01" shader="flat" width="2" height="2"
        material="color:#191817; shader: flat" transparent="true" opacity=".9">
-          <a-plane id="pauseiconleft" color="white" depth=".1" scale="1 1 1" 
+          <a-plane id="pauseiconleft" color="white" depth=".1" scale="1 1 1"
           position="-.4 0 .06" shader="flat" width=".5" height="1"  ></a-plane>
-          <a-plane id="pauseiconright" color="white" depth=".1" scale="1 1 1" 
+          <a-plane id="pauseiconright" color="white" depth=".1" scale="1 1 1"
           position=".4 0 .06" shader="flat" width=".5" height="1"></a-plane>
        </a-plane>
 
@@ -145,8 +149,26 @@
        <a-box color="darkgrey" position="-35 -2 16" scale="3 3 3" class="musicpanel" sound="src: #song"></a-box>
        <a-box color="darkgrey" position="38 25 -16" scale="2 2 2" class="musicpanel" sound="src: #song"></a-box>
        <a-box color="darkgrey" position="-38 25 -16" scale="2 2 2" class="musicpanel" sound="src: #song"></a-box>
-       
+
+  <!-- Hatsune Miku model on the stage -->
+      <a-entity
+              gltf-model="#hatsuneMikuModel"
+              animation-mixer
+              position="0 2 -13"
+              rotation="0 0 0"
+              scale="500 500 500"
+              animation="property: rotation; to: 0 360 0; loop: true; dur: 10000">
+      </a-entity>
+
+      <!-- Crowd -->
+      <a-entity gltf-model="#crowdModel" position="-24 0.1 -1" rotation="0 0 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#crowdModel" position="-16 0.1 -1" rotation="0 0 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#crowdModel" position="-8 0.1 -1" rotation="0 0 0" scale="1 1 1" animation-mixer></a-entity>
+      <a-entity gltf-model="#crowdModel" position="0 0.1 -1" rotation="0 0 0" scale="1 1 1" animation-mixer></a-entity>
+      <a-entity gltf-model="#crowdModel" position="8 0.1 -1" rotation="0 0 0" scale="1 1 1" animation-mixer></a-entity>
+      <a-entity gltf-model="#crowdModel" position="16 0.1 -1" rotation="0 0 0" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#crowdModel" position="24 0.1 -1" rotation="0 0 0" scale="1 1 1"></a-entity>
 
     </a-scene>
-  </body>
+</body>
 </html>
